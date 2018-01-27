@@ -293,7 +293,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -423,7 +423,7 @@ Transform:
   m_Children:
   - {fileID: 910572874}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &51286457
 MonoBehaviour:
@@ -1330,7 +1330,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -1422,7 +1422,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -1626,7 +1626,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -5035,7 +5035,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1558049926076122, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_Name
@@ -5136,7 +5136,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -5360,7 +5360,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -5452,7 +5452,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -6104,7 +6104,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -7138,7 +7138,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -10792,7 +10792,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -11001,7 +11001,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -11098,7 +11098,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -15065,7 +15065,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -15157,7 +15157,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -15254,7 +15254,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -15478,7 +15478,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -15609,66 +15609,6 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0c5fe0d683b95614194038c4698458d9, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &855568303
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.06455361
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 6.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -8.073374
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1558049926076122, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_Name
-      value: Kugel (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: botSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
-        type: 2}
-      propertyPath: Endzone1
-      value: 
-      objectReference: {fileID: 347493145}
-    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
-        type: 2}
-      propertyPath: Endzone2
-      value: 
-      objectReference: {fileID: 51286452}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &872120073 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4608272289391630, guid: 0c5fe0d683b95614194038c4698458d9,
@@ -15784,7 +15724,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -15897,7 +15837,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &946345064
 Prefab:
@@ -15972,7 +15912,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -16133,7 +16073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle_: 0
   WallPosition: 1
-  PlayerBounceStrength: 24.35
+  PlayerBounceStrength: 7.08
   BotBounceStrength: 14.53
   SlowStrength: 0
   GameOver: {fileID: 0}
@@ -16237,7 +16177,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1558049926076122, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_Name
@@ -16343,7 +16283,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -16562,7 +16502,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -16659,7 +16599,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -16766,7 +16706,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -16863,7 +16803,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -17271,7 +17211,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -17813,7 +17753,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -19676,7 +19616,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -19773,7 +19713,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -19865,7 +19805,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -20265,7 +20205,7 @@ MonoBehaviour:
   DragDirection: {x: 0, y: 0, z: 0}
   isPlayer1: 0
   BLocker: {fileID: 481905387}
-  SpecialAttackDistance: 4
+  SpecialAttackDistance: 10
   SpecialAttack: 0
 --- !u!23 &1482684028
 MeshRenderer:
@@ -20738,7 +20678,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -20835,7 +20775,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -21044,7 +20984,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -21292,66 +21232,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4608272289391630, guid: 0c5fe0d683b95614194038c4698458d9,
     type: 2}
   m_PrefabInternal: {fileID: 1822998350}
---- !u!1001 &1596922870
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.06455361
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -8.073374
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1558049926076122, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-      propertyPath: m_Name
-      value: Kugel (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: botSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
-        type: 2}
-      propertyPath: Endzone1
-      value: 
-      objectReference: {fileID: 347493145}
-    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
-        type: 2}
-      propertyPath: Endzone2
-      value: 
-      objectReference: {fileID: 51286452}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1609246544 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4608272289391630, guid: 0c5fe0d683b95614194038c4698458d9,
@@ -21579,7 +21459,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -22032,7 +21912,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -22209,7 +22089,7 @@ MonoBehaviour:
   DragDirection: {x: 0, y: 0, z: 0}
   isPlayer1: 0
   BLocker: {fileID: 1115450314}
-  SpecialAttackDistance: 4
+  SpecialAttackDistance: 10
   SpecialAttack: 0
 --- !u!23 &1712417827
 MeshRenderer:
@@ -22225,7 +22105,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cfb1c70c23685464d96caa587cc7d9bd, type: 2}
+  - {fileID: 2100000, guid: 10a20eab33028ef42bc3ce8327422f26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22377,7 +22257,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -22433,7 +22313,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1558049926076122, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_Name
@@ -26121,7 +26001,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -26530,7 +26410,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 9f410c12bafb9e748846aecfd72e6318, type: 2}
+  m_Material: {fileID: 2100000, guid: fbd0d3844cdd33b4d8b835d56bfbf7dc, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -26850,7 +26730,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -27799,7 +27679,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -27953,7 +27833,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -28045,7 +27925,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -28371,7 +28251,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -28697,7 +28577,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -28866,7 +28746,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -28958,7 +28838,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -29050,7 +28930,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -29147,7 +29027,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -29196,7 +29076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle_: 0
   WallPosition: 0
-  PlayerBounceStrength: 24.35
+  PlayerBounceStrength: 7.08
   BotBounceStrength: 14.53
   SlowStrength: 0
   GameOver: {fileID: 0}
@@ -29464,7 +29344,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -29556,7 +29436,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
@@ -29648,7 +29528,7 @@ Prefab:
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}
       propertyPath: PlayerBounceStrength
-      value: 22.72
+      value: 5.57
       objectReference: {fileID: 0}
     - target: {fileID: 114417173452963390, guid: 0c5fe0d683b95614194038c4698458d9,
         type: 2}

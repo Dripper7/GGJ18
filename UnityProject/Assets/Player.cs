@@ -80,8 +80,8 @@ public class Player : MonoBehaviour {
             v3.z = 10.0f;
             v3 = Camera.main.ScreenToWorldPoint(v3);
             this.GetComponent<LineRenderer>().enabled = true;
-            this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
-            this.GetComponent<LineRenderer>().SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            //this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
+            //this.GetComponent<LineRenderer>().SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             foreach (Kugel Kugel in SA_AttachedKugeln)
             {
