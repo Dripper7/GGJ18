@@ -109,9 +109,8 @@ public class Player : MonoBehaviour {
                         currentlyshot = Kugel;
                         delta = 0.25f;
                         Kugel.GetComponentInChildren<MeshRenderer>().enabled = true;
-                            Kugel.GetComponent<Collider>().enabled = true;
-
-                            Kugel.GetComponent<Rigidbody>().useGravity = true;
+                        Kugel.GetComponent<Collider>().enabled = true;
+                        Kugel.GetComponent<Rigidbody>().useGravity = true;
                         Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
                         Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
                         Kugel.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
@@ -132,7 +131,7 @@ public class Player : MonoBehaviour {
                             currentlyshot = Kugel;
                             delta = 0.25f;
                             Kugel.GetComponentInChildren<MeshRenderer>().enabled = true;
-
+                            Kugel.GetComponent<Collider>().enabled = true;
                             Kugel.GetComponent<Rigidbody>().useGravity = true;
                             Kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
                             Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
