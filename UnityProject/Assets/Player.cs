@@ -39,7 +39,8 @@ public class Player : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (speedfactor > speedlimit)
             speedfactor = speedlimit;
         if (speed < minspeed)
@@ -68,9 +69,48 @@ public class Player : MonoBehaviour {
         }
         if (isPlayer)
             this.transform.rotation = new Quaternion(0, 0, 0, 0);
+
+        if (SA_AttachedKugeln.Count > 0)
+        {
+            foreach (Player Kugel in SA_AttachedKugeln)
+            {
+                Kugel.GetComponent<LineRenderer>().enabled = true;
+                Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
+                Kugel.GetComponent<LineRenderer>().SetPosition(1,   this.transform.position - Kugel.transform.position);
+                Kugel.GetComponent<Rigidbody>().useGravity = false;
+                Kugel.GetComponent<Collider>().enabled = false;
+                Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, 0.5f);
+                SpecialAttackReady = false;
+            }
+            SAtimer += Time.deltaTime;
+            if (SAtimer > 5)
+            {
+                SpecialAttackReady = true;
+                SAtimer = 0;
+                foreach (Player Kugel in SA_AttachedKugeln)
+                {
+                    if (!Kugel.isPlayer)
+                    {
+
+                        Kugel.GetComponent<Rigidbody>().AddForce(Kugel.transform.position - this.transform.position, ForceMode.Impulse);
+                        Kugel.GetComponent<LineRenderer>().enabled = false;
+                        Kugel.GetComponent<Rigidbody>().useGravity = true;
+                        Kugel.GetComponent<Collider>().enabled = true;
+
+                    }
+                }
+                SA_AttachedKugeln.Clear();
+
+            }
+        }
     }
+
+    private float SAtimer;
     public bool isPlayer;
     public float SpecialAttackDistance;
+
+    public bool SpecialAttack;
+    private bool SpecialAttackReady = true;
     void PlayerInput()
     {
         if (isPlayer)
@@ -95,14 +135,22 @@ public class Player : MonoBehaviour {
 
             if (Input.GetKey(KeyCode.Space))
             {
-                foreach(Player player in All)
+                SpecialAttack = true;
+            }else
+            {
+                SpecialAttack = false;
+            }
+            if (SpecialAttack && SpecialAttackReady)
+            {
+                GetComponentInChildren<ParticleSystem>().Play();
+
+                foreach (Player Kugel in All)
                 {
-                    if (!player.isPlayer)
+                    if (!Kugel.isPlayer)
                     {
-                        if(Vector3.Distance(this.transform.position,player.transform.position) < SpecialAttackDistance)
+                        if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
                         {
-                            player.GetComponent<Rigidbody>().isKinematic = true;
-                            GetComponentInChildren<ParticleSystem>().Play();
+                            SA_AttachedKugeln.Add(Kugel);
                         }
                     }
                 }
@@ -112,6 +160,7 @@ public class Player : MonoBehaviour {
 
     }
 
+    private List<Player> SA_AttachedKugeln = new List<Player>();
     public void ResetIsKinematic()
     {
 
