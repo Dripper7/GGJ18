@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\InputManager.cs" />
+    <Compile Include="Assets\Kugel.cs" />
     <Compile Include="Assets\obstacle.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Test.cs" />

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-    public static Player instance;
     // Use this for initialization
     public bool speedblocker;
     [Range(0,1)]
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     public float speedlimit;
 
     public float minspeed;
+
 
 
     private float timer;
@@ -37,7 +38,12 @@ public class Player : MonoBehaviour {
     {
         All.Remove(this);
     }
+    private bool Shoot;
+    float x;
 
+    Kugel currentlyshot;
+    private float delta = 0.25f;
+    public Vector3 DragDirection = Vector3.zero;
     // Update is called once per frame
     void Update()
     {
@@ -63,57 +69,115 @@ public class Player : MonoBehaviour {
             timer += Time.deltaTime;
         }
         PlayerInput();
-        if (!isPlayer)
-        {
-            speed = speed * botSpeed;
-        }
-        if (isPlayer)
+
             this.transform.rotation = new Quaternion(0, 0, 0, 0);
 
         if (SA_AttachedKugeln.Count > 0)
         {
-            foreach (Player Kugel in SA_AttachedKugeln)
+            GetComponentInChildren<Image>().fillAmount = 0;
+
+            var v3 = Input.mousePosition;
+            v3.z = 10.0f;
+            v3 = Camera.main.ScreenToWorldPoint(v3);
+            this.GetComponent<LineRenderer>().enabled = true;
+            this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
+            this.GetComponent<LineRenderer>().SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+            foreach (Kugel Kugel in SA_AttachedKugeln)
             {
+                Physics.IgnoreCollision(Kugel.GetComponent<Collider>(), GetComponent<Collider>(), true);
+                Kugel.GetComponent<Collider>().enabled = false;
+                Kugel.GetComponentInChildren<MeshRenderer>().enabled = false;
+
                 Kugel.GetComponent<LineRenderer>().enabled = true;
                 Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
                 Kugel.GetComponent<LineRenderer>().SetPosition(1,   this.transform.position - Kugel.transform.position);
+                if (Vector3.Distance(Kugel.transform.position, this.transform.position) > 0.1f)
+                    delta += Time.deltaTime;
+                Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, delta);
                 Kugel.GetComponent<Rigidbody>().useGravity = false;
-                Kugel.GetComponent<Collider>().enabled = false;
-                Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, 0.5f);
-                SpecialAttackReady = false;
             }
-            SAtimer += Time.deltaTime;
-            if (SAtimer > 5)
+
+            if (this == All[0])
+                if (Input.GetKeyDown(KeyCode.Space) && !Shoot)
             {
-                SpecialAttackReady = true;
-                SAtimer = 0;
-                foreach (Player Kugel in SA_AttachedKugeln)
+                Shoot = true;
+
+                foreach (Kugel Kugel in SA_AttachedKugeln)
                 {
-                    if (!Kugel.isPlayer)
                     {
+                        currentlyshot = Kugel;
+                        delta = 0.25f;
+                        Kugel.GetComponentInChildren<MeshRenderer>().enabled = true;
+                            Kugel.GetComponent<Collider>().enabled = true;
 
-                        Kugel.GetComponent<Rigidbody>().AddForce(Kugel.transform.position - this.transform.position, ForceMode.Impulse);
+                            Kugel.GetComponent<Rigidbody>().useGravity = true;
+                        Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                        Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
+                        Kugel.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
                         Kugel.GetComponent<LineRenderer>().enabled = false;
-                        Kugel.GetComponent<Rigidbody>().useGravity = true;
-                        Kugel.GetComponent<Collider>().enabled = true;
-
+                        SA_AttachedKugeln.Remove(Kugel);
+                        break;
                     }
                 }
-                SA_AttachedKugeln.Clear();
+            }
+            if (this == All[1])
+                if (Input.GetKeyDown(KeyCode.M) && !Shoot)
+                {
+                    Shoot = true;
 
+                    foreach (Kugel Kugel in SA_AttachedKugeln)
+                    {
+                        {
+                            currentlyshot = Kugel;
+                            delta = 0.25f;
+                            Kugel.GetComponentInChildren<MeshRenderer>().enabled = true;
+
+                            Kugel.GetComponent<Rigidbody>().useGravity = true;
+                            Kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                            Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
+                            Kugel.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
+                            Kugel.GetComponent<LineRenderer>().enabled = false;
+                            SA_AttachedKugeln.Remove(Kugel);
+                            break;
+                        }
+                    }
+                }
+            if (Shoot)
+            {
+                x += Time.deltaTime;
+
+                if (x > 0.25f)
+                {
+                    Shoot = false;
+                    Physics.IgnoreCollision(currentlyshot.GetComponent<Collider>(), GetComponent<Collider>(), false);
+                    x = 0;
+                }
+            }
+        }
+        if(SA_AttachedKugeln.Count == 0 && !SpecialAttackReady)
+        {
+            this.GetComponent<LineRenderer>().enabled = false;
+            SAtimer += Time.deltaTime * 2;
+            GetComponentInChildren<Image>().fillAmount = SAtimer;
+            if(SAtimer > 1)
+            {
+                SAtimer = 0;
+                SpecialAttackReady = true;
             }
         }
     }
-
+    private bool SpecialAttackReady;
     private float SAtimer;
-    public bool isPlayer;
+    public bool isPlayer1;
+    public GameObject BLocker;
+
     public float SpecialAttackDistance;
 
     public bool SpecialAttack;
-    private bool SpecialAttackReady = true;
     void PlayerInput()
     {
-        if (isPlayer)
+        if (this == All[0])
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -133,6 +197,13 @@ public class Player : MonoBehaviour {
                 GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
             }
 
+            if (Input.GetKey(KeyCode.F))
+            {
+                BLocker.SetActive(true);            } else
+            {
+                BLocker.SetActive(false);
+            }
+
             if (Input.GetKey(KeyCode.Space))
             {
                 SpecialAttack = true;
@@ -143,10 +214,9 @@ public class Player : MonoBehaviour {
             if (SpecialAttack && SpecialAttackReady)
             {
                 GetComponentInChildren<ParticleSystem>().Play();
-
-                foreach (Player Kugel in All)
+                SpecialAttackReady = false;
+                foreach (Kugel Kugel in Kugel.All)
                 {
-                    if (!Kugel.isPlayer)
                     {
                         if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
                         {
@@ -156,11 +226,62 @@ public class Player : MonoBehaviour {
                 }
             }
         }
+        if (this == All[1])
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+                GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
+            }
+
+            if (Input.GetKey(KeyCode.K))
+            {
+                BLocker.SetActive(true);
+            }
+            else
+            {
+                BLocker.SetActive(false);
+            }
+
+            if (Input.GetKey(KeyCode.M))
+            {
+                SpecialAttack = true;
+            }
+            else
+            {
+                SpecialAttack = false;
+            }
+            if (SpecialAttack && SpecialAttackReady)
+            {
+                GetComponentInChildren<ParticleSystem>().Play();
+                SpecialAttackReady = false;
+                foreach (Kugel Kugel in Kugel.All)
+                {
+                    {
+                        if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
+                        {
+                            SA_AttachedKugeln.Add(Kugel);
+                        }
+                    }
+                }
+            }
+        }
+        
 
 
     }
 
-    private List<Player> SA_AttachedKugeln = new List<Player>();
+    private List<Kugel> SA_AttachedKugeln = new List<Kugel>();
     public void ResetIsKinematic()
     {
 
