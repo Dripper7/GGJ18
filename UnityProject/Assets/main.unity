@@ -5060,6 +5060,11 @@ Prefab:
       propertyPath: Endzone2
       value: 
       objectReference: {fileID: 51286452}
+    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: kugelstate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
   m_IsPrefabParent: 0
@@ -16202,6 +16207,11 @@ Prefab:
       propertyPath: Endzone2
       value: 
       objectReference: {fileID: 51286452}
+    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: kugelstate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
   m_IsPrefabParent: 0
@@ -20134,9 +20144,15 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.2857151
+        value: 0
         inSlope: 0
         outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.07217906
+        value: 0.2835898
+        inSlope: -0.05736947
+        outSlope: -0.05736947
         tangentMode: 0
       - serializedVersion: 2
         time: 1
@@ -20196,7 +20212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedblocker: 0
-  SpeedPercentage: 0.33
+  SpeedPercentage: 0.173
   speed: 1
   botSpeed: 1
   speedfactor: 2.54
@@ -22002,9 +22018,15 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.2857151
+        value: 0
         inSlope: 0
         outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.07217906
+        value: 0.2835898
+        inSlope: -0.05736947
+        outSlope: -0.05736947
         tangentMode: 0
       - serializedVersion: 2
         time: 1
@@ -22080,7 +22102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedblocker: 0
-  SpeedPercentage: 0.33
+  SpeedPercentage: 0.173
   speed: 1
   botSpeed: 1
   speedfactor: 2.54
@@ -22338,6 +22360,11 @@ Prefab:
       propertyPath: Endzone2
       value: 
       objectReference: {fileID: 51286452}
+    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: kugelstate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
   m_IsPrefabParent: 0
@@ -27705,6 +27732,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4161596692215514, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.06455361
@@ -27752,6 +27784,41 @@ Prefab:
       propertyPath: Endzone2
       value: 
       objectReference: {fileID: 51286452}
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 0.20221606
+      objectReference: {fileID: 0}
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.53217053
+      objectReference: {fileID: 0}
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
+      value: -0.6425381
+      objectReference: {fileID: 0}
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
+      value: -0.6425381
+      objectReference: {fileID: 0}
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 96602228904045090, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.024391174
+      objectReference: {fileID: 0}
+    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
+        type: 2}
+      propertyPath: kugelstate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
   m_IsPrefabParent: 0

@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     // Use this for initialization
     public bool speedblocker;
-    [Range(0,1)]
+    [Range(0, 1)]
     public float SpeedPercentage;
     public float speed;
     public float botSpeed;
 
-     [Range(1,5)]
+    [Range(1, 5)]
     public float speedfactor = 1;
     public float speedlimit;
 
@@ -31,7 +32,8 @@ public class Player : MonoBehaviour {
     }
 
     private Vector3 zAxis;
-    void Start () {
+    void Start()
+    {
         All.Add(this);
     }
     private void OnDestroy()
@@ -45,8 +47,10 @@ public class Player : MonoBehaviour {
     private float delta = 0.25f;
     public Vector3 DragDirection = Vector3.zero;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        PlayerInput();
+
         if (speedfactor > speedlimit)
             speedfactor = speedlimit;
         if (speed < minspeed)
@@ -68,9 +72,8 @@ public class Player : MonoBehaviour {
             speedlimit = 0.5f;
             timer += Time.deltaTime;
         }
-        PlayerInput();
 
-            this.transform.rotation = new Quaternion(0, 0, 0, 0);
+        this.transform.rotation = new Quaternion(0, 0, 0, 0);
 
         if (SA_AttachedKugeln.Count > 0)
         {
@@ -79,126 +82,161 @@ public class Player : MonoBehaviour {
             var v3 = Input.mousePosition;
             v3.z = 10.0f;
             v3 = Camera.main.ScreenToWorldPoint(v3);
-            this.GetComponent<LineRenderer>().enabled = true;
+            //this.GetComponent<LineRenderer>().enabled = true;
             //this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
             //this.GetComponent<LineRenderer>().SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             foreach (Kugel Kugel in SA_AttachedKugeln)
             {
-                Physics.IgnoreCollision(Kugel.GetComponent<Collider>(), GetComponent<Collider>(), true);
-                Kugel.GetComponent<Collider>().enabled = false;
-                Kugel.GetComponentInChildren<MeshRenderer>().enabled = false;
+                Kugel.kugelstate = KugelState.Loaded;
 
-                Kugel.GetComponent<LineRenderer>().enabled = true;
-                Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
-                Kugel.GetComponent<LineRenderer>().SetPosition(1,   this.transform.position - Kugel.transform.position);
+                Physics.IgnoreCollision(Kugel.GetComponent<Collider>(), GetComponent<Collider>(), true);
+                this.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
+                Kugel.GetComponent<LineRenderer>().SetPosition(1, this.transform.position - Kugel.transform.position);
                 if (Vector3.Distance(Kugel.transform.position, this.transform.position) > 0.1f)
-                    delta += Time.deltaTime;
-                Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, delta);
-                Kugel.GetComponent<Rigidbody>().useGravity = false;
+                    Kugel.delta += Time.deltaTime * 2;
+                Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, Kugel.delta);
             }
 
             if (this == All[0])
                 if (Input.GetKeyDown(KeyCode.Space) && !Shoot)
-            {
-                Shoot = true;
-
-                foreach (Kugel Kugel in SA_AttachedKugeln)
                 {
-                    {
-                        currentlyshot = Kugel;
-                        delta = 0.25f;
-                        Kugel.GetComponentInChildren<MeshRenderer>().enabled = true;
-                        Kugel.GetComponent<Collider>().enabled = true;
-                        Kugel.GetComponent<Rigidbody>().useGravity = true;
-                        Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
-                        Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
-                        Kugel.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
-                        Kugel.GetComponent<LineRenderer>().enabled = false;
-                        SA_AttachedKugeln.Remove(Kugel);
-                        break;
-                    }
-                }
-            }
-            if (this == All[1])
-                if (Input.GetKeyDown(KeyCode.M) && !Shoot)
-                {
-                    Shoot = true;
+                    //Shoot = true;
 
                     foreach (Kugel Kugel in SA_AttachedKugeln)
                     {
                         {
-                            currentlyshot = Kugel;
-                            delta = 0.25f;
-                            Kugel.GetComponentInChildren<MeshRenderer>().enabled = true;
-                            Kugel.GetComponent<Collider>().enabled = true;
-                            Kugel.GetComponent<Rigidbody>().useGravity = true;
-                            Kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
-                            Kugel.GetComponent<LineRenderer>().SetPosition(0, Vector3.zero);
-                            Kugel.GetComponent<LineRenderer>().SetPosition(1, Vector3.zero);
-                            Kugel.GetComponent<LineRenderer>().enabled = false;
+                            Kugel.kugelstate = KugelState.Shot;
                             SA_AttachedKugeln.Remove(Kugel);
+                            Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                            Kugel.EnableCollider(this,Kugel);
                             break;
                         }
                     }
                 }
-            if (Shoot)
-            {
-                x += Time.deltaTime;
-
-                if (x > 0.25f)
+            if (this == All[1])
+                if (Input.GetKeyDown(KeyCode.M) && !Shoot)
                 {
-                    Shoot = false;
-                    Physics.IgnoreCollision(currentlyshot.GetComponent<Collider>(), GetComponent<Collider>(), false);
-                    x = 0;
+                    //Shoot = true;
+
+                    foreach (Kugel Kugel in SA_AttachedKugeln)
+                    {
+                        {
+                            Kugel.kugelstate = KugelState.Shot;
+                            SA_AttachedKugeln.Remove(Kugel);
+                            Kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                            Kugel.EnableCollider(this, Kugel);
+                            break;
+                        }
+                    }
+
                 }
-            }
         }
-        if(SA_AttachedKugeln.Count == 0 && !SpecialAttackReady)
+        if (SA_AttachedKugeln.Count == 0 && !SpecialAttackReady)
         {
             this.GetComponent<LineRenderer>().enabled = false;
             SAtimer += Time.deltaTime * 2;
             GetComponentInChildren<Image>().fillAmount = SAtimer;
-            if(SAtimer > 1)
+            if (SAtimer > 1)
             {
                 SAtimer = 0;
                 SpecialAttackReady = true;
             }
         }
     }
+
+
     private bool SpecialAttackReady;
     private float SAtimer;
     public bool isPlayer1;
     public GameObject BLocker;
 
     public float SpecialAttackDistance;
+    float timerkey = 3;
+    float timerKeyw = 0;
+    float timerKeya = 0;
+    float timerKeys = 0;
+    float timerKeyd = 0;
 
     public bool SpecialAttack;
     void PlayerInput()
     {
+        timerKeyw = timerkey;
+        timerKeya = timerkey;
+        timerKeys = timerkey;
+        timerKeyd = timerkey;
         if (this == All[0])
         {
+
+
             if (Input.GetKey(KeyCode.W))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
+                if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                {
+                    timerKeyw += Time.deltaTime;
+                    GetComponent<Rigidbody>().AddForce(Vector3.up * speed * timerKeyw, ForceMode.Impulse);
+                }
+                else
+                {
+                    timerKeyw = timerkey;
+                    GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
+                }
+
             }
             if (Input.GetKey(KeyCode.S))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
+                timerKeys += Time.deltaTime;
+
+                if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                {
+                    GetComponent<Rigidbody>().AddRelativeForce(Vector3.down * speed * timerKeys, ForceMode.Impulse);
+                }
+                else
+                {
+                    timerKeys = timerkey;
+                    GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
+
+                }
             }
             if (Input.GetKey(KeyCode.A))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
+                timerKeya += Time.deltaTime;
+
+                if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                {
+                    GetComponent<Rigidbody>().AddForce(Vector3.left * speed * timerKeya, ForceMode.Impulse);
+                }
+                else
+                {
+                    timerKeya = timerkey;
+
+                    GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
+
+                }
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
+                timerKeyd += Time.deltaTime;
+
+                if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                {
+                    GetComponent<Rigidbody>().AddForce(Vector3.right * speed * timerKeyd, ForceMode.Impulse);
+                }
+                else
+                {
+                    timerKeyd = timerkey;
+
+                    GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
+
+                }
             }
 
             if (Input.GetKey(KeyCode.F))
             {
-                BLocker.SetActive(true);            } else
+                BLocker.SetActive(true);
+            }
+            else
             {
                 BLocker.SetActive(false);
             }
@@ -206,7 +244,8 @@ public class Player : MonoBehaviour {
             if (Input.GetKey(KeyCode.Space))
             {
                 SpecialAttack = true;
-            }else
+            }
+            else
             {
                 SpecialAttack = false;
             }
@@ -220,6 +259,7 @@ public class Player : MonoBehaviour {
                         if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
                         {
                             SA_AttachedKugeln.Add(Kugel);
+
                         }
                     }
                 }
@@ -275,7 +315,7 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-        
+
 
 
     }
