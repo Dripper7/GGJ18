@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Obstacle { jumppad, slower, Wall, EndZone };
+public enum ObstacleState { jumppad, slower, DestructableWall, EndZone };
 public enum direction { top, bottom, left, right };
 
 public class obstacle : MonoBehaviour
 {
-    public Obstacle obstacle_;
+    public static List<obstacle> _All;
+    public static List<obstacle> All
+    {
+        get { if (_All == null) _All = new List<obstacle>(); return _All; }
+        private set { _All = value; }
+    }
+    public ObstacleState obstaclestate;
     public direction WallPosition;
 
     public AudioClip Abprallsound;
@@ -16,9 +22,10 @@ public class obstacle : MonoBehaviour
 
     [Range(0, 25)]
     public float PlayerBounceStrength;
-    [Range(1, 15)]
+    [Range(1, 35)]
     public float BotBounceStrength;
 
+    bool botUltraBoost;
     public float SlowStrength;
 
     public GameObject GameOver;
@@ -29,30 +36,38 @@ public class obstacle : MonoBehaviour
     public float Health = 100;
     public void OnCollisionEnter(Collision collision)
     {
+        if (botUltraBoost)
+            BotBounceStrength *= 25;
         foreach (Player player in Player.All)
         {
             if (collision.gameObject == player.gameObject)
             {
                 {
-                    switch (obstacle_)
+                    switch (obstaclestate)
                     {
-                        case Obstacle.jumppad:
+                        case ObstacleState.jumppad:
                             if (WallPosition == direction.top)
                                 player.GetComponent<Rigidbody>().AddForce(Vector3.down * player.speed * PlayerBounceStrength, ForceMode.Impulse);
                             if (WallPosition == direction.bottom)
                             {
                                 player.GetComponent<Rigidbody>().AddForce(Vector3.up * player.speed * PlayerBounceStrength, ForceMode.Impulse);
                             }
+                            if (WallPosition == direction.left)
+                                player.GetComponent<Rigidbody>().AddForce(Vector3.right * player.speed * PlayerBounceStrength, ForceMode.Impulse);
+                            if (WallPosition == direction.right)
+                            {
+                                player.GetComponent<Rigidbody>().AddForce(Vector3.left * player.speed * PlayerBounceStrength, ForceMode.Impulse);
+                            }
                             GetComponent<AudioSource>().clip = Abprallsound;
                             GetComponent<AudioSource>().Play();
                             break;
 
-                        case Obstacle.slower:
+                        case ObstacleState.slower:
 
                             player.speedblocker = true;
                             break;
 
-                        case Obstacle.Wall:
+                        case ObstacleState.DestructableWall:
                             GetComponent<AudioSource>().clip = Abprallsound;
                             GetComponent<AudioSource>().Play();
                             if (WallPosition == direction.top)
@@ -71,7 +86,7 @@ public class obstacle : MonoBehaviour
                                 player.GetComponent<Rigidbody>().AddForce(Vector3.left * player.speed * PlayerBounceStrength, ForceMode.Impulse);
                             }
                             break;
-                        case Obstacle.EndZone:
+                        case ObstacleState.EndZone:
                             Destroy(player.gameObject);
                             GameOver.SetActive(true);
                             break;
@@ -85,9 +100,9 @@ public class obstacle : MonoBehaviour
             {
                 kugel.GetComponentInChildren<ParticleSystem>().Play();
                 {
-                    switch (obstacle_)
+                    switch (obstaclestate)
                     {
-                        case Obstacle.jumppad:
+                        case ObstacleState.jumppad:
                             GetComponent<AudioSource>().clip = Abprallsound;
                             GetComponent<AudioSource>().Play();
                             if (WallPosition == direction.top)
@@ -96,13 +111,20 @@ public class obstacle : MonoBehaviour
                             {
                                 kugel.GetComponent<Rigidbody>().AddForce(Vector3.up * kugel.speed * BotBounceStrength, ForceMode.Impulse);
                             }
+                            if (WallPosition == direction.left)
+                                kugel.GetComponent<Rigidbody>().AddForce(Vector3.right * kugel.speed * PlayerBounceStrength, ForceMode.Impulse);
+                            if (WallPosition == direction.right)
+                            {
+                                kugel.GetComponent<Rigidbody>().AddForce(Vector3.left * kugel.speed * PlayerBounceStrength, ForceMode.Impulse);
+                            }
+
                             break;
 
-                        case Obstacle.slower:
-
+                        case ObstacleState.EndZone:
+                            Destroy(kugel.gameObject);
                             break;
 
-                        case Obstacle.Wall:
+                        case ObstacleState.DestructableWall:
                             GetComponent<AudioSource>().clip = Abprallsound;
                             GetComponent<AudioSource>().Play();
                             Health -= 25f;
@@ -130,9 +152,14 @@ public class obstacle : MonoBehaviour
 
         }
     }
-    void St()
+    void Start()
     {
+        All.Add(this);
+    }
 
+    private void OnDestroy()
+    {
+        All.Remove(this);
     }
     Color testmat;
     bool dead;

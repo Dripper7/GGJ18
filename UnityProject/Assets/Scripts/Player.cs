@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public float minspeed;
 
-
+    public bool singleplayer;
 
     private float timer;
 
@@ -44,7 +44,12 @@ public class Player : MonoBehaviour
     float x;
 
     Kugel currentlyshot;
+
+    public obstacle current_target;
     private float delta = 0.25f;
+    float oldDistance = 10000;
+    float currentDistance = 0f;
+
     public Vector3 DragDirection = Vector3.zero;
     // Update is called once per frame
     void FixedUpdate()
@@ -97,45 +102,88 @@ public class Player : MonoBehaviour
                     Kugel.delta += Time.deltaTime * 2;
                 Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, Kugel.delta);
             }
-
-            if (this == All[0])
+            if (singleplayer)
+            {
                 foreach (Kugel Kugel in SA_AttachedKugeln)
                 {
                     if (Input.GetKeyDown(KeyCode.Space) && !Shoot && Vector3.Distance(this.transform.position, Kugel.transform.position) < 0.5f)
                     {
                         //Shoot = true;
+                        foreach (obstacle obstacl in obstacle.All)
+                        {
+                            if (obstacl.obstaclestate == ObstacleState.DestructableWall)
+                            {
+                                if (Vector3.Distance(obstacl.transform.position, this.transform.position) < oldDistance)
+                                {
+                                    oldDistance = Vector3.Distance(obstacl.transform.position, this.transform.position);
+                                    current_target = obstacl;
+                                }
+                            }
+                            //foreach (obstacle obstacl in obstacle.All)
+                            //{
+                            //    Vector3 screenPoint = Camera.main.WorldToViewportPoint(obstacl.transform.position);
+                            //    bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+                            //}
+                        }
+                        if (current_target.obstaclestate == ObstacleState.DestructableWall)
+                        {
+                            Debug.Log("works");
+                            GetComponent<AudioSource>().clip = aShot;
+                            GetComponent<AudioSource>().Play();
+                            Kugel.kugelstate = KugelState.Shot;
+                            SA_AttachedKugeln.Remove(Kugel);
+                            Kugel.GetComponent<Rigidbody>().AddForce((current_target.transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                            Kugel.EnableCollider(this, Kugel);
+                            current_target = null;
+                            oldDistance = 10000;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!singleplayer)
+            {
 
+
+                if (this == All[0])
+                    foreach (Kugel Kugel in SA_AttachedKugeln)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space) && !Shoot && Vector3.Distance(this.transform.position, Kugel.transform.position) < 0.5f)
                         {
+                            //Shoot = true;
+
                             {
-                                GetComponent<AudioSource>().clip = aShot;
-                                GetComponent<AudioSource>().Play();
-                                Kugel.kugelstate = KugelState.Shot;
-                                SA_AttachedKugeln.Remove(Kugel);
-                                Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
-                                Kugel.EnableCollider(this, Kugel);
-                                break;
+                                {
+                                    GetComponent<AudioSource>().clip = aShot;
+                                    GetComponent<AudioSource>().Play();
+                                    Kugel.kugelstate = KugelState.Shot;
+                                    SA_AttachedKugeln.Remove(Kugel);
+                                    Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                                    Kugel.EnableCollider(this, Kugel);
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-            if (this == All[1])
-                foreach (Kugel kugel in SA_AttachedKugeln)
-                {
-                    if (Input.GetKeyDown(KeyCode.M) && !Shoot && Vector3.Distance(this.transform.position, kugel.transform.position) < 0.5f)
-                {
+                if (this == All[1])
+                    foreach (Kugel kugel in SA_AttachedKugeln)
+                    {
+                        if (Input.GetKeyDown(KeyCode.M) && !Shoot && Vector3.Distance(this.transform.position, kugel.transform.position) < 0.5f)
                         {
                             {
-                                GetComponent<AudioSource>().clip = aShot;
-                                GetComponent<AudioSource>().Play();
-                                kugel.kugelstate = KugelState.Shot;
-                                SA_AttachedKugeln.Remove(kugel);
-                                kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
-                                kugel.EnableCollider(this, kugel);
-                                break;
+                                {
+                                    GetComponent<AudioSource>().clip = aShot;
+                                    GetComponent<AudioSource>().Play();
+                                    kugel.kugelstate = KugelState.Shot;
+                                    SA_AttachedKugeln.Remove(kugel);
+                                    kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                                    kugel.EnableCollider(this, kugel);
+                                    break;
+                                }
                             }
                         }
                     }
-                }
+            }
         }
 
         if (SA_AttachedKugeln.Count == 0 && !SpecialAttackReady)
@@ -171,10 +219,8 @@ public class Player : MonoBehaviour
         timerKeya = timerkey;
         timerKeys = timerkey;
         timerKeyd = timerkey;
-        if (this == All[0])
+        if (singleplayer)
         {
-
-
             if (Input.GetKey(KeyCode.W))
             {
                 if (GetComponent<Rigidbody>().velocity.magnitude < 50)
@@ -187,7 +233,6 @@ public class Player : MonoBehaviour
                     timerKeyw = timerkey;
                     GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
                 }
-
             }
             if (Input.GetKey(KeyCode.S))
             {
@@ -201,7 +246,6 @@ public class Player : MonoBehaviour
                 {
                     timerKeys = timerkey;
                     GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
-
                 }
             }
             if (Input.GetKey(KeyCode.A))
@@ -215,9 +259,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     timerKeya = timerkey;
-
                     GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
-
                 }
             }
 
@@ -232,9 +274,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     timerKeyd = timerkey;
-
                     GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
-
                 }
             }
 
@@ -263,7 +303,7 @@ public class Player : MonoBehaviour
                 SpecialAttackReady = false;
                 foreach (Kugel Kugel in Kugel.All)
                 {
-                    if(Kugel.kugelstate != KugelState.Loaded)
+                    if (Kugel.kugelstate != KugelState.Loaded)
                     {
                         if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
                         {
@@ -274,54 +314,158 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (this == All[1])
+        if (!singleplayer)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (this == All[0])
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-                GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
-
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
-            }
-
-            if (Input.GetKey(KeyCode.K))
-            {
-                BLocker.SetActive(true);
-            }
-            else
-            {
-                BLocker.SetActive(false);
-            }
-
-            if (Input.GetKey(KeyCode.M))
-            {
-                SpecialAttack = true;
-            }
-            else
-            {
-                SpecialAttack = false;
-            }
-            if (SpecialAttack && SpecialAttackReady)
-            { 
-                GetComponent<AudioSource>().clip = aSpecialAttacK;
-                GetComponent<AudioSource>().Play();
-                GetComponentInChildren<ParticleSystem>().Play();
-                SpecialAttackReady = false;
-                foreach (Kugel Kugel in Kugel.All)
+                if (Input.GetKey(KeyCode.W))
                 {
-                    if (Kugel.kugelstate != KugelState.Loaded)
+                    if (GetComponent<Rigidbody>().velocity.magnitude < 50)
                     {
-                        if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
+                        timerKeyw += Time.deltaTime;
+                        GetComponent<Rigidbody>().AddForce(Vector3.up * speed * timerKeyw, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        timerKeyw = timerkey;
+                        GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
+                    }
+
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    timerKeys += Time.deltaTime;
+
+                    if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                    {
+                        GetComponent<Rigidbody>().AddRelativeForce(Vector3.down * speed * timerKeys, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        timerKeys = timerkey;
+                        GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
+
+                    }
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    timerKeya += Time.deltaTime;
+
+                    if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                    {
+                        GetComponent<Rigidbody>().AddForce(Vector3.left * speed * timerKeya, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        timerKeya = timerkey;
+
+                        GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
+
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    timerKeyd += Time.deltaTime;
+
+                    if (GetComponent<Rigidbody>().velocity.magnitude < 50)
+                    {
+                        GetComponent<Rigidbody>().AddForce(Vector3.right * speed * timerKeyd, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        timerKeyd = timerkey;
+
+                        GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
+
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.F))
+                {
+                    BLocker.SetActive(true);
+                }
+                else
+                {
+                    BLocker.SetActive(false);
+                }
+
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    SpecialAttack = true;
+                }
+                else
+                {
+                    SpecialAttack = false;
+                }
+                if (SpecialAttack && SpecialAttackReady)
+                {
+                    GetComponent<AudioSource>().clip = aSpecialAttacK;
+                    GetComponent<AudioSource>().Play();
+                    GetComponentInChildren<ParticleSystem>().Play();
+                    SpecialAttackReady = false;
+                    foreach (Kugel Kugel in Kugel.All)
+                    {
+                        if (Kugel.kugelstate != KugelState.Loaded)
                         {
-                            SA_AttachedKugeln.Add(Kugel);
+                            if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
+                            {
+                                SA_AttachedKugeln.Add(Kugel);
+
+                            }
+                        }
+                    }
+                }
+            }
+            if (this == All[1])
+            {
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    GetComponent<Rigidbody>().AddForce(Vector3.up * speed, ForceMode.Impulse);
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    GetComponent<Rigidbody>().AddForce(Vector3.down * speed, ForceMode.Impulse);
+                }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                    GetComponent<Rigidbody>().AddForce(Vector3.left * speed, ForceMode.Impulse);
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    GetComponent<Rigidbody>().AddForce(Vector3.right * speed, ForceMode.Impulse);
+                }
+
+                if (Input.GetKey(KeyCode.K))
+                {
+                    BLocker.SetActive(true);
+                }
+                else
+                {
+                    BLocker.SetActive(false);
+                }
+
+                if (Input.GetKey(KeyCode.M))
+                {
+                    SpecialAttack = true;
+                }
+                else
+                {
+                    SpecialAttack = false;
+                }
+                if (SpecialAttack && SpecialAttackReady)
+                {
+                    GetComponent<AudioSource>().clip = aSpecialAttacK;
+                    GetComponent<AudioSource>().Play();
+                    GetComponentInChildren<ParticleSystem>().Play();
+                    SpecialAttackReady = false;
+                    foreach (Kugel Kugel in Kugel.All)
+                    {
+                        if (Kugel.kugelstate != KugelState.Loaded)
+                        {
+                            if (Vector3.Distance(this.transform.position, Kugel.transform.position) < SpecialAttackDistance)
+                            {
+                                SA_AttachedKugeln.Add(Kugel);
+                            }
                         }
                     }
                 }
