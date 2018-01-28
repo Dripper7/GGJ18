@@ -75,6 +75,7 @@ public class obstacle : MonoBehaviour
         {
             if (collision.gameObject == kugel.gameObject)
             {
+                kugel.GetComponent<ParticleSystem>().Play();
                 {
                     switch (obstacle_)
                     {

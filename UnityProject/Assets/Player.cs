@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public float minspeed;
 
-
+    public GameObject blocker;
 
     private float timer;
 
@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         All.Add(this);
+        Physics.IgnoreCollision(blocker.GetComponent<Collider>(), GetComponent<Collider>(), false);
+
     }
     private void OnDestroy()
     {
@@ -77,6 +79,41 @@ public class Player : MonoBehaviour
 
         if (SA_AttachedKugeln.Count > 0)
         {
+            if (this == All[0])
+                if (Input.GetKeyDown(KeyCode.Space) && !Shoot)
+                {
+                    //Shoot = true;
+
+                    foreach (Kugel Kugel in SA_AttachedKugeln)
+                    {
+                        if(Vector3.Distance(Kugel.transform.position, this.transform.position) < 1f)
+                        {
+                            Kugel.kugelstate = KugelState.Shot;
+                            SA_AttachedKugeln.Remove(Kugel);
+                            Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                            Kugel.EnableCollider(this, Kugel);
+                            break;
+                        }
+                    }
+                }
+            if (this == All[1])
+                if (Input.GetKeyDown(KeyCode.M) && !Shoot)
+                {
+                    //Shoot = true;
+
+                    foreach (Kugel Kugel in SA_AttachedKugeln)
+                    {
+                        if (Vector3.Distance(Kugel.transform.position, this.transform.position) < 1f)
+                        {
+                            Kugel.kugelstate = KugelState.Shot;
+                            SA_AttachedKugeln.Remove(Kugel);
+                            Kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
+                            Kugel.EnableCollider(this, Kugel);
+                            break;
+                        }
+                    }
+
+                }
             GetComponentInChildren<Image>().fillAmount = 0;
 
             var v3 = Input.mousePosition;
@@ -98,39 +135,7 @@ public class Player : MonoBehaviour
                 Kugel.transform.position = Vector3.MoveTowards(Kugel.transform.position, this.transform.position, Kugel.delta);
             }
 
-            if (this == All[0])
-                if (Input.GetKeyDown(KeyCode.Space) && !Shoot)
-                {
-                    //Shoot = true;
 
-                    foreach (Kugel Kugel in SA_AttachedKugeln)
-                    {
-                        {
-                            Kugel.kugelstate = KugelState.Shot;
-                            SA_AttachedKugeln.Remove(Kugel);
-                            Kugel.GetComponent<Rigidbody>().AddForce((All[1].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
-                            Kugel.EnableCollider(this,Kugel);
-                            break;
-                        }
-                    }
-                }
-            if (this == All[1])
-                if (Input.GetKeyDown(KeyCode.M) && !Shoot)
-                {
-                    //Shoot = true;
-
-                    foreach (Kugel Kugel in SA_AttachedKugeln)
-                    {
-                        {
-                            Kugel.kugelstate = KugelState.Shot;
-                            SA_AttachedKugeln.Remove(Kugel);
-                            Kugel.GetComponent<Rigidbody>().AddForce((All[0].transform.position - this.transform.position).normalized * 55, ForceMode.Impulse);
-                            Kugel.EnableCollider(this, Kugel);
-                            break;
-                        }
-                    }
-
-                }
         }
         if (SA_AttachedKugeln.Count == 0 && !SpecialAttackReady)
         {

@@ -5041,15 +5041,6 @@ Prefab:
       propertyPath: m_Name
       value: Kugel (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: botSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 23204846532957988, guid: 3877093be5587de44926a5d211b6eb48,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 37e25ba7c6312c844a26a786a0f971ad, type: 2}
     - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
         type: 2}
       propertyPath: Endzone1
@@ -5060,11 +5051,6 @@ Prefab:
       propertyPath: Endzone2
       value: 
       objectReference: {fileID: 51286452}
-    - target: {fileID: 114742699505978154, guid: 3877093be5587de44926a5d211b6eb48,
-        type: 2}
-      propertyPath: kugelstate
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3877093be5587de44926a5d211b6eb48, type: 2}
   m_IsPrefabParent: 0
@@ -6252,6 +6238,7 @@ GameObject:
   - component: {fileID: 481905391}
   - component: {fileID: 481905390}
   - component: {fileID: 481905389}
+  - component: {fileID: 481905392}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -6327,6 +6314,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 481905387}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &481905392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481905387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf0c55f9b3f17e449d2b91158debc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacle_: 0
+  WallPosition: 2
+  PlayerBounceStrength: 25
+  BotBounceStrength: 15
+  SlowStrength: 0
+  GameOver: {fileID: 0}
+  HitMaterial: {fileID: 0}
+  Health: 100
 --- !u!4 &490927863 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4608272289391630, guid: 0c5fe0d683b95614194038c4698458d9,
@@ -11789,7 +11795,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1954079239
+  randomSeed: 697117414
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -18512,6 +18518,7 @@ MonoBehaviour:
   speedfactor: 2.54
   speedlimit: 5
   minspeed: 1
+  blocker: {fileID: 0}
   DragDirection: {x: 0, y: 0, z: 0}
   isPlayer1: 0
   BLocker: {fileID: 0}
@@ -20218,6 +20225,7 @@ MonoBehaviour:
   speedfactor: 2.54
   speedlimit: 4
   minspeed: 1
+  blocker: {fileID: 481905387}
   DragDirection: {x: 0, y: 0, z: 0}
   isPlayer1: 0
   BLocker: {fileID: 481905387}
@@ -22108,6 +22116,7 @@ MonoBehaviour:
   speedfactor: 2.54
   speedlimit: 4
   minspeed: 1
+  blocker: {fileID: 1115450314}
   DragDirection: {x: 0, y: 0, z: 0}
   isPlayer1: 0
   BLocker: {fileID: 1115450314}
@@ -22518,7 +22527,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -592536076
+  randomSeed: 946039238
   InitialModule:
     serializedVersion: 3
     enabled: 1
