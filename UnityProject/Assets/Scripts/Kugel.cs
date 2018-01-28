@@ -48,13 +48,16 @@ public class Kugel : MonoBehaviour {
     {
         StartCoroutine(EnableCollider2(player, kugel));
     }
-    public IEnumerator EnableCollider2(Player player, Kugel kugel)
+    private IEnumerator EnableCollider2(Player player, Kugel kugel)
     {
-        y += Time.deltaTime;
-        while (y < 0.25f)
+        while (y < 0.15f)
         {
+            y += Time.deltaTime;
+            Debug.Log("waitign");
             yield return null;
         }
+        Debug.Log("finished");
+
         Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>(), false);
         y = 0;
 
