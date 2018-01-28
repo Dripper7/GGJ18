@@ -19,7 +19,7 @@ public class GameModeManager : MonoBehaviour {
         TestEvent.Invoke();
         if (CUrrentlyLoaded != null)
         {
-            Destroy(CUrrentlyLoaded);
+            UnloadMode();
             CUrrentlyLoaded = null;
         }
     }
@@ -29,8 +29,10 @@ public class GameModeManager : MonoBehaviour {
         CUrrentlyLoaded = Instantiate(Mode,transform.root);
     }
 
-    public void UnloadMode(GameObject Mode)
+    public void UnloadMode()
     {
+        foreach (Kugel kugel in Kugel.All)
+            Destroy(kugel.gameObject);
         Destroy(CUrrentlyLoaded);
     }
 }

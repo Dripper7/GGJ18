@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 184614332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10480268, y: 1.8576815, z: -12.105177}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -601,7 +601,7 @@ MonoBehaviour:
         m_MethodName: LoadMode
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1107940513026258, guid: 1545c576ee22240448c51b57da51f038,
+          m_ObjectArgument: {fileID: 1429551527863346, guid: 1545c576ee22240448c51b57da51f038,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -1126,7 +1126,7 @@ MonoBehaviour:
         m_MethodName: LoadMode
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1153722523853094, guid: 10554a0a56a5b054bade9ac73fe1f298,
+          m_ObjectArgument: {fileID: 1528928540984494, guid: 10554a0a56a5b054bade9ac73fe1f298,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0

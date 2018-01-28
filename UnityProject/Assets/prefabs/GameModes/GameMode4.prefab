@@ -108788,7 +108788,7 @@ MonoBehaviour:
   DragDirection: {x: 0, y: 0, z: 0}
   isPlayer1: 0
   BLocker: {fileID: 1951592939914246}
-  SpecialAttackDistance: 10
+  SpecialAttackDistance: 255
   SpecialAttack: 0
   aSpecialAttacK: {fileID: 8300000, guid: fb54ccae892b64147a4ac51cf0b14ce4, type: 3}
   aShot: {fileID: 8300000, guid: 63f03dfc471a3c84b9367e2b63b98e83, type: 3}
