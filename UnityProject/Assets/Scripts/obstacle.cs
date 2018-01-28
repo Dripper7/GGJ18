@@ -11,9 +11,12 @@ public class obstacle : MonoBehaviour
     public direction WallPosition;
 
     public AudioClip Abprallsound;
+    public AudioClip DieSound;
+    public AudioClip BreakSound;
+
     [Range(0, 25)]
     public float PlayerBounceStrength;
-    [Range(1,15)]
+    [Range(1, 15)]
     public float BotBounceStrength;
 
     public float SlowStrength;
@@ -131,14 +134,32 @@ public class obstacle : MonoBehaviour
 
     }
     Color testmat;
+    bool dead;
+    bool broken;
     // Update is called once per frame
     void Update()
     {
-        if (Health < 50)
+        if (Health ==25)
+        {
+            if (!broken)
+            {
+                GetComponent<AudioSource>().clip = BreakSound;
+                GetComponent<AudioSource>().Play();
+                broken = true;
+            }
             this.GetComponent<MeshRenderer>().material = HitMaterial;
+        }
         if (Health <= 0)
         {
-            Destroy(this.gameObject);
+            if (!dead)
+            {
+                GetComponent<AudioSource>().clip = DieSound;
+                GetComponent<AudioSource>().Play();
+                dead = true;
+            }
+
+            if (!GetComponent<AudioSource>().isPlaying)
+                Destroy(this.gameObject);
         }
     }
 }

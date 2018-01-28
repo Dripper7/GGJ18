@@ -224,6 +224,7 @@
     <Compile Include="Assets\Scripts\Kugel.cs" />
     <Compile Include="Assets\Scripts\obstacle.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\SoundSystem.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\Wall.cs" />
   </ItemGroup>
