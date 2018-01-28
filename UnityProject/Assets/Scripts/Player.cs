@@ -215,6 +215,9 @@ public class Player : MonoBehaviour
     public bool SpecialAttack;
     void PlayerInput()
     {
+        if (Input.GetKeyUp(KeyCode.Escape)){
+            GameModeManager.instance.Resettere();
+        }
         timerKeyw = timerkey;
         timerKeya = timerkey;
         timerKeys = timerkey;
